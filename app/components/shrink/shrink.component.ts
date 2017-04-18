@@ -3,6 +3,9 @@ import { Http, Headers, ResponseOptions } from '@angular/http';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import { Database } from './../../providers/database/database.service';
+
+
 
 @Component({
 	selector: 'shrink',
@@ -17,7 +20,8 @@ export class ShrinkComponent implements OnInit {
 
 	constructor(
 		private http: Http,
-		private location: Location
+		private location: Location,
+		private database: Database
 	) { 
 		this.longUrl = '';
 	}
@@ -34,8 +38,12 @@ export class ShrinkComponent implements OnInit {
 			this.http.get(Url)
 				.map(result => result.text())
         .do(result => console.log(`result: `, result))
-        .subscribe(suc => {
-          console.log('suc',suc)
+        .subscribe(short => {
+					this.database.getDatabase().createDocument({
+						type: 'url',
+						long: this.longUrl,
+						short
+					})
 					this.location.back();
         }, error => {
           console.log("ero",error)
