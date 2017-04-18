@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Links } from './links';
 import { Database } from './../../providers/database/database.service';
-
+import { openUrl } from 'utils/utils';
 
 @Component({
 	selector: 'links',
@@ -38,6 +38,14 @@ export class LinksComponent implements OnInit {
 	  */
 	 public goToShrink() {
 		 this.router.navigate(['shrink']);
+	 }
+
+
+	 /**
+	  * launchUrl
+	  */
+	 public launchUrl(url: string) {
+		 openUrl(url)
 	 }
 
 	 private loadData() {

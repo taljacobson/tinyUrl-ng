@@ -7,7 +7,7 @@
 <GridLayout >
     <ListView [items]="urls" class="list-group">
         <ng-template let-url="item" >
-          <StackLayout class="list-group-item" >
+          <StackLayout class="list-group-item" (tap)="launchUrl(url.short)">
             <Label [text]="url.short" class="h2" ></Label>
             <Label [text]="url.long" ></Label>
             
