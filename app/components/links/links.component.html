@@ -1,12 +1,12 @@
 <ActionBar title="TinyUrl List" icon="" class="action-bar">
-    <ActionItem >
+    <ActionItem (tap)="goToShrink()">
       <Button class="" text="New" ios.position="right" class="action-item"></Button>
     </ActionItem>
 </ActionBar>
 
-<GridLayout rows="*" columns="1">
+<GridLayout >
     <ListView [items]="urls" class="list-group">
-        <ng-template let-url="item" let-odd="odd" let-even="even">
+        <ng-template let-url="item" >
           <StackLayout class="list-group-item" >
             <Label [text]="url.short" class="h2" ></Label>
             <Label [text]="url.long" ></Label>
