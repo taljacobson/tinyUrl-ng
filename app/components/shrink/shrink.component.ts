@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { Database } from './../../providers/database/database.service';
-
+import { Toast, makeText } from 'nativescript-toast';
 
 
 @Component({
@@ -49,7 +49,7 @@ export class ShrinkComponent implements OnInit {
           console.log("ero",error)
         })
 		} else {
-      console.log("there needs to be a value")
-    }
+			makeText('a valid long URl us required').show();
+    	}
 	}
 }

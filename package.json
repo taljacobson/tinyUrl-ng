@@ -22,6 +22,7 @@
     "nativescript-angular": "~1.5.1",
     "nativescript-couchbase": "^1.0.17",
     "nativescript-theme-core": "~1.0.2",
+    "nativescript-toast": "^1.4.5",
     "nativescript-unit-test-runner": "^0.3.4",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.2.0",

@@ -8,7 +8,7 @@ export class Database {
     private storage: Couchbase;
 
     constructor() {
-        if(this.isInstatiated) {
+        if(!this.isInstatiated) {
             this.storage = new Couchbase('tinyurl');
             this.storage.createView('urls', '1', (document, emitter) =>  {
                 if (document.type == 'url') {
@@ -25,4 +25,4 @@ export class Database {
     public getDatabase(): Couchbase {
         return this.storage;
     }
-}
+} 

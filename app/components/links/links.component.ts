@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Links } from './links';
+import { Database } from './../../providers/database/database.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class LinksComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		private location: Location
+		private location: Location,
+		private database: Database
 	) {
 		this.urls = []
 	 }
@@ -39,11 +41,9 @@ export class LinksComponent implements OnInit {
 	 }
 
 	 private loadData() {
-		 this.urls.push(
-			 { 
-				 long: "http://www.thepolyglotdeveloper.com",
-				 short: "http://tinyurl.com/h9knhdk"
-			 }
-		 )
+		let rows = this.database.getDatabase().executeQuery('urls');
+		for (let i = 0; i < rows.length; i++ ) {
+			this.urls.push(rows[i])
+		}
 	 }
 }
